@@ -1,18 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
+
 require('./css/bulma.css');
+
+import App from './components/App';
 import FrontPage from './components/FrontPage';
 import TopicPage from './components/TopicPage';
 import ArticlePage from './components/ArticlePage';
 import NotFound from './components/NotFound';
+import reducer from './reducers/index.reducer';
 
-ReactDOM.render(<Router history={browserHistory}>
-    <Route path='/' component={App}>
-        <IndexRoute component={FrontPage} />
-        <Route path='/:topic' component={TopicPage}/>
-        <Route path='/article/:article' component={ArticlePage} />
-        <Route path='*' component={NotFound}/>
-    </Route>
-</Router>, document.getElementById('app'));
+const logger = createLogger();
+const store = createStore(reducer, applyMiddleware(thunk, logger));
+
+ReactDOM.render(<Provider store={store}>
+    <Router history={browserHistory}>
+        <Route path='/' component={App}>
+            <IndexRoute component={FrontPage} />
+            <Route path='/:topic' component={TopicPage} />
+            <Route path='/article/:article' component={ArticlePage} />
+            <Route path='*' component={NotFound} />
+        </Route>
+    </Router>
+</Provider>, document.getElementById('app'));

@@ -1,13 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
+// import { Link } from 'react-router';
+import { getArticles } from '../actions/articles';
+import { getTopArticles } from '../reducers/articles.reducer';
+import ArticleList from './ArticleList';
 
 const FrontPage = React.createClass({
-    render () {
+    componentDidMount() {
+        this.props.getArticles();
+    },
+    render() {
         return (
-            <div>
-                FRONT PAGE!!! (Will render random list of articles)
-                </div>
+            <div id='FrontPage'>
+                <ArticleList articles={this.props.articles} />
+            </div>
         );
     }
 });
 
-export default FrontPage;
+function mapStateToProps(state) {
+    return {
+        articles: getTopArticles(state, 10)
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getArticles: () => {
+            dispatch(getArticles());
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FrontPage);
