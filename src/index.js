@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import { Provider } from 'react-redux';
@@ -8,7 +7,9 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
-require('./css/bulma.css');
+import './css/bulma.css';
+//import './css/font-awesome.css';
+import './css/index.css';
 
 import App from './components/App';
 import FrontPage from './components/FrontPage';
