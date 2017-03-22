@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchComments } from '../actions/comments';
 
+// TODO: This neesd to be updated to include an onClick which changes the comment votes (using the vote reducer, from mapDispatchToProps!!)
+
 const CommentCard = React.createClass({
     render() {
         const comments = this.props.comments ?
@@ -22,7 +24,7 @@ const CommentCard = React.createClass({
                             </div>
                         </article>
                     </div>
-                )
+                );
             })
             : 'Loading...';
         return (

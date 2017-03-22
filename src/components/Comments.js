@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchComments } from '../actions/comments';
 import CommentCard from './CommentCard';
 import { getTopComments } from '../reducers/comments.reducer';
+import CommentForm from './CommentForm';
 
 const Comments = React.createClass({
     componentDidMount () {
@@ -14,6 +15,7 @@ const Comments = React.createClass({
             return (
                 <div>
                     <CommentCard comments={this.props.comments}/>
+                    <CommentForm />
                 </div>
             );
         } else {return (<p>Loading....</p>);}

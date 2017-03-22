@@ -15,9 +15,9 @@ const ArticlePage = React.createClass({
             return (
                 <div className="columns">
                     <div className="column is-10 is-offset-1 is-success">
-                        <h1 className='is-large'><strong>{this.props.article.title}</strong></h1>
+                        <h3 className="title is-3"><strong>{this.props.article.title}</strong></h3>
                         <p>{this.props.article.body}</p>
-                        <h1><strong>{'By: ' + this.props.article.created_by}</strong></h1>
+                        <p className="title is-5 is-spaced">{'By: ' + this.props.article.created_by}</p>
                         <h1><strong>{'Votes: ' + this.props.article.votes}</strong></h1>
                         <h1><strong>{'Comments: ' + this.props.article.comments}</strong></h1>
                         <Comments id={this.props.params.article}/>
