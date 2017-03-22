@@ -50,7 +50,7 @@ function normaliseData (arr) {
 }
 
 export function getArticleData (state, id) {
-  return state.articles.byId[id];
+  return state.articles.byID[id];
 }
 
 export default articlesReducer;

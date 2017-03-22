@@ -14,7 +14,7 @@ function voteReducer (prevState = initialState, action) {
 
     }
     if (action.type === types.VOTE_ARTICLE_SUCCESS) {
-        newState.byId = (action.data)
+        newState.byID = action.data
         newState.loading = false;
     }
      if (action.type === types.VOTE_ARTICLES_ERROR) {
