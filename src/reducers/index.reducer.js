@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import { reducer as formReducer } from 'redux-form'
+
 import voteReducer from './vote.reducer';
 import topicsReducer from './topics.reducer';
 import articlesReducer from './articles.reducer';
@@ -9,5 +11,6 @@ export default combineReducers({
     topics: topicsReducer,
     articles: articlesReducer,
     vote: voteReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    form: formReducer
 });

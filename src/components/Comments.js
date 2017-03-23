@@ -4,6 +4,7 @@ import { fetchComments } from '../actions/comments';
 import CommentCard from './CommentCard';
 import { getTopComments } from '../reducers/comments.reducer';
 import CommentForm from './CommentForm';
+import {postComment} from '../actions/postComment';
 
 const Comments = React.createClass({
     componentDidMount () {
@@ -14,10 +15,13 @@ const Comments = React.createClass({
             return (
                 <div>
                     <CommentCard comments={this.props.comments}/>
-                    <CommentForm />
+                    <CommentForm onSubmit={this.handleSubmit} id={this.props.id}/>
                 </div>
             );
         } else {return (<p>Loading....</p>);}
+    },
+    handleSubmit: (comment, articleID) => {
+        this.props.postComment(comment, articleID);
     }
 });
 
@@ -31,6 +35,9 @@ function mapDispatchToProps (dispatch) {
     return {
         fetchComments: (id) => {
             dispatch(fetchComments(id));
+        },
+         postComment:  (comment, articleID) => {
+            dispatch(postComment(comment, articleID));
         }
     };
 }
