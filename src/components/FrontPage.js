@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router';
+
 import { getArticles } from '../actions/articles';
 import { getTopArticles } from '../reducers/articles.reducer';
 import ArticleList from './ArticleList';

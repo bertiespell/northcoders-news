@@ -6,8 +6,16 @@ const initialState = {
     error: null
 };
 
-function articlesReducer (prevState = initialState, action) {
+function articlesReducer(prevState = initialState, action) {
     switch (action.type) {
+        case types.VOTE_ARTICLE_SUCCESS: {
+            const newState = Object.assign({}, prevState);
+            newState.byID = Object.assign({}, newState.byID);
+            newState.byID[action.data._id] = action.data;
+            newState.loading = false;
+            newState.error = null;
+            return newState;
+        }
         case types.FETCH_ARTICLES_REQUEST: {
             const newState = Object.assign({}, prevState, {
                 fetching: true
@@ -34,7 +42,7 @@ function articlesReducer (prevState = initialState, action) {
     }
 }
 
-export function getTopArticles (state, num) {
+export function getTopArticles(state, num) {
     return Object.keys(state.articles.byID).reduce(function (acc, id) {
         return acc.concat(state.articles.byID[id]);
     }, []).sort(function (a, b) {
@@ -42,15 +50,15 @@ export function getTopArticles (state, num) {
     }).slice(0, num);
 }
 
-function normaliseData (arr) {
+function normaliseData(arr) {
     return arr.reduce(function (acc, elem) {
         acc[elem._id] = elem;
         return acc;
     }, {});
 }
 
-export function getArticleData (state, id) {
-  return state.articles.byID[id];
+export function getArticleData(state, id) {
+    return state.articles.byID[id];
 }
 
 export default articlesReducer;

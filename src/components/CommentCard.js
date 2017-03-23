@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchComments } from '../actions/comments';
-
-// TODO: This neesd to be updated to include an onClick which changes the comment votes (using the vote reducer, from mapDispatchToProps!!)
+import {voteComment} from '../actions/voteComment';
 
 const CommentCard = React.createClass({
     render() {
@@ -10,11 +9,11 @@ const CommentCard = React.createClass({
             this.props.comments.map(function (comment, i) {
                 return (
                     <div className='box' key={i}>
-                        {/*<a onClick={this.props.voteArticle.bind(null, this.props.id, 'up')}><i className="fa fa-caret-up fa-2x" />UP</a>*/}
+                        <a onClick={this.props.voteComment.bind(null, comment._id, 'up')}><i className="fa fa-caret-up fa-2x" /></a>
                         <article className='media'>
                             <div className='media-left'>
-                                {comment.votes}
-                                {/*<a onClick={this.props.voteArticle.bind(null, this.props.id, 'down')}><i className="fa fa-caret-down fa-2x" />DOWN</a>*/}
+                                <p>{comment.votes}</p>
+                                <a onClick={this.props.voteComment.bind(null, comment._id, 'down')}><i className="fa fa-caret-down fa-2x" /></a>
                             </div>
                             <div className='media-content'>
                                 <div className='content'>
@@ -25,7 +24,7 @@ const CommentCard = React.createClass({
                         </article>
                     </div>
                 );
-            })
+            }.bind(this))
             : 'Loading...';
         return (
             <div>
@@ -35,5 +34,12 @@ const CommentCard = React.createClass({
     }
 });
 
+function mapDispatchToProps(dispatch) {
+    return {
+        voteComment: (id, vote) => {
+            dispatch(voteComment(id, vote));
+        }
+    };
+}
 
-export default CommentCard;
+export default connect(null, mapDispatchToProps)(CommentCard);

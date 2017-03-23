@@ -10,7 +10,6 @@ const Comments = React.createClass({
         this.props.fetchComments (this.props.id);
     },
     render () {
-        console.log('******************', this.props.comments);
         if (this.props.comments) {
             return (
                 <div>
