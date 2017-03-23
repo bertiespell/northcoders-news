@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 import './css/bulma.css';
-//import './css/font-awesome.css';
+import './css/font-awesome.css';
 import './css/index.css';
 
 import App from './components/App';

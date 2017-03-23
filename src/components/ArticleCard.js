@@ -7,11 +7,11 @@ const ArticleCard = React.createClass({
     render() {
         return (
             <div className='box'>
-                <a onClick={this.props.voteArticle.bind(null, this.props.id, 'up')}><i className="fa fa-caret-up fa-2x" />UP</a>
                 <article className='media'>
                     <div className='media-left'>
-                        {this.props.votes}
-                        <a onClick={this.props.voteArticle.bind(null, this.props.id, 'down')}><i className="fa fa-caret-down fa-2x" />DOWN</a>
+                        <a onClick={this.props.voteArticle.bind(null, this.props.id, 'up')}><i className="fa fa-caret-up fa-2x" /></a>
+                        <p>{this.props.votes}</p>
+                        <a onClick={this.props.voteArticle.bind(null, this.props.id, 'down')}><i className="fa fa-caret-down fa-2x" /></a>
                     </div>
                     <div className='media-content'>
                         <div className='content'>

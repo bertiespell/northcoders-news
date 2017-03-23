@@ -25,7 +25,7 @@ const NavBar = React.createClass({
                     <div className='container'>
                         <div className='nav-left'>
                             <a className='nav-item'>
-                                <img src='https://northcoders.com/images/logos/learn_to_code_manchester_original_second.png' alt='northcoders-logo' />
+                                <Link to='/'><img src='https://northcoders.com/images/logos/learn_to_code_manchester_original_second.png' alt='northcoders-logo' /></Link>
                             </a>
                         </div>
 
