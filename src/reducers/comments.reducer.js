@@ -5,29 +5,21 @@ import * as types from '../types/types';
 const initialState = {
     byID: {},
     fetching: false,
-    error: null
+    error: null,
+    commentText: ''
 };
 
 function commentsReducer(prevState = initialState, action) {
     switch (action.type) {
         case types.VOTE_COMMENTS_SUCCESS: {
-            console.log('ACTION!!!!', action.comment_id);
             let newState = Object.assign({}, prevState);
             let myState = Object.assign({}, newState.byID);
-            // let newVotes = prevState.action.comment_id.votes;
             if (action.vote === 'up') {
                 myState[action.comment_id].votes++;
             }
             if (action.vote === 'down') {
                 myState[action.comment_id].votes--;   
             }
-            console.log("NEWWWWWWWWW", myState[action.comment_id].votes);
-            //newState.byID[action.comment_id] = Object.assign({}, prevState[action.comment_id], {
-            //     votes: newVotes
-            // });
-            // newState.loading = false;
-            // newState.error = null;
-            // console.log('NEWSTATE OMGGGG', newState);
             return newState;
         }
         case types.FETCH_COMMENTS_REQUEST: {
@@ -36,6 +28,8 @@ function commentsReducer(prevState = initialState, action) {
             });
             return newState;
         }
+        // TODO: using the same state update as FETCH COMMENTS (because the POST will now be on the server)
+        case types.POST_COMMENT_SUCCESS:
         case types.FETCH_COMMENTS_SUCCESS: {
             const newState = Object.assign({}, prevState, {
                 fetching: false,

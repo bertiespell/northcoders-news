@@ -1,19 +1,17 @@
 import React from 'react';
+import {postComment} from '../actions/postComment';
+import { connect } from 'react-redux';
+
 
 const CommentForm = React.createClass({
-    render() {
+    render () {
         return (
-            // TODO: MAKE A PUT REQUEST HERE!!!!!!!!!
             <div className='container'>
                 <div className='box'>
                     <div className="field">
-                        <label className="label">Username</label>
+                        <label className="label">Comment</label>
                         <p className="control">
-                            <input className="input" type="text" placeholder="Username" />
-                        </p>
-                        <label className="label">Message</label>
-                        <p className="control">
-                            <textarea className="textarea" placeholder="Comment"></textarea>
+                            <textarea className="textarea" placeholder="Post comment here ..."></textarea>
                         </p>
                     </div>
                 </div>
@@ -27,4 +25,12 @@ const CommentForm = React.createClass({
     }
 });
 
-export default CommentForm;
+function mapDispatchToProps (dispatch) {
+    return {
+        postComment:  (comment, articleID) => {
+            dispatch(postComment(comment, articleID));
+        }
+    };
+}
+
+export default connect(null, mapDispatchToProps)(CommentForm);
