@@ -14,7 +14,7 @@ const ArticlePage = React.createClass({
         if (this.props.article) {
             return (
                 <div className="columns">
-                    <div className="column is-10 is-offset-1 is-success">
+                    <div className="column is-10 is-offset-1 is-success" id='articlePage'>
                         <h3 className="title is-3"><strong>{this.props.article.title}</strong></h3>
                         <p>{this.props.article.body}</p>
                         <p className="title is-5 is-spaced">{'By: ' + this.props.article.created_by}</p>

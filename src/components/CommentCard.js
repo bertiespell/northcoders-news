@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchComments } from '../actions/comments';
+import { deleteComment } from '../actions/deleteComment';
 import {voteComment} from '../actions/voteComment';
 
 const CommentCard = React.createClass({
@@ -20,6 +20,7 @@ const CommentCard = React.createClass({
                                     {comment.body}
                                 </div>
                                 <small>{comment.created_by}</small>
+                                <a className="button is-danger" id='deleteButton' onClick={this.props.deleteComment.bind(null, comment._id)}><i className='fa fa-trash-o' aria-hidden='true' ></i></a>
                             </div>
                         </article>
                     </div>
@@ -38,6 +39,9 @@ function mapDispatchToProps(dispatch) {
     return {
         voteComment: (id, vote) => {
             dispatch(voteComment(id, vote));
+        },
+        deleteComment: (id) => {
+            dispatch(deleteComment(id));
         }
     };
 }

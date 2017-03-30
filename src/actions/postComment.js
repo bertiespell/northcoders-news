@@ -7,7 +7,7 @@ export function postComment (comment, articleID) {
         dispatch(postCommentRequest(comment));
         axios
         .post(`${ROOT}/articles/${articleID}/comments`, {
-            'comment': comment
+            'comment': comment,
         })
         .then(() => {
             dispatch(postCommentSuccess(comment, articleID));
@@ -27,8 +27,8 @@ export function postCommentRequest () {
 export function postCommentSuccess (comment, articleID) {
     return {
         type: types.POST_COMMENT_SUCCESS,
-        comment,
-        articleID
+        comment: comment,
+        articleID: articleID
     };
 }
 

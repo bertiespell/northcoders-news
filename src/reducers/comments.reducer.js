@@ -18,7 +18,7 @@ function commentsReducer(prevState = initialState, action) {
                 myState[action.comment_id].votes++;
             }
             if (action.vote === 'down') {
-                myState[action.comment_id].votes--;   
+                myState[action.comment_id].votes--;
             }
             return newState;
         }
@@ -28,8 +28,16 @@ function commentsReducer(prevState = initialState, action) {
             });
             return newState;
         }
-        // TODO: using the same state update as FETCH COMMENTS (because the POST will now be on the server)
-        case types.POST_COMMENT_SUCCESS:
+        case types.POST_COMMENT_SUCCESS: {
+            const newState = Object.assign({}, prevState);
+            const newbyID = Object.assign({}, newState.byID);
+            newbyID[action.articleID] = {body: action.comment};
+            newState.byID = newbyID;
+            console.log("ACTION COMMENT", action.comment);
+            console.log("NEW BY", newbyID);
+            console.log("***********", newState);
+            return newState;
+        }
         case types.FETCH_COMMENTS_SUCCESS: {
             const newState = Object.assign({}, prevState, {
                 fetching: false,
@@ -42,6 +50,25 @@ function commentsReducer(prevState = initialState, action) {
                 fetching: false,
                 error: action.data
             });
+            return newState;
+        }
+        case types.DELETE_COMMENT_REQUEST: {
+            const newState = Object.assign({}, prevState);
+            newState.loading = true;
+            return newState;
+        }
+        case types.DELETE_COMMENT_SUCCESS: {
+            const newState = Object.assign({}, prevState);
+            const newComments = Object.assign({}, newState.byID);
+            delete newComments[action.comment_id];
+            newState.byID = newComments;
+            newState.fetching = false;
+            return newState;
+        }
+        case types.DELETE_COMMENT_ERROR: {
+            const newState = Object.assign({}, prevState);
+            newState.error = action.err;
+            newState.loading = false;
             return newState;
         }
         default: {
@@ -61,7 +88,7 @@ export function getTopComments(state, num) {
     return Object.keys(state.comments.byID).reduce(function (acc, id) {
         return acc.concat(state.comments.byID[id]);
     }, []).sort(function (a, b) {
-        return b.comments - a.comments;
+        return b.votes - a.votes;
     }).slice(0, num);
 }
 

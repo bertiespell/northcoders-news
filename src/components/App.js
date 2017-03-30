@@ -8,7 +8,7 @@ const App = React.createClass({
                 <NavBar />
                 <nav className='level'>
                 <nav className='level-item has-text-centered'>
-                <h1 className="title is-1">NorthCoders News</h1>
+                <h1 className="title is-1" id='titlee'>NorthCoders News</h1>
                 </nav>
                 </nav>
                 {this.props.children}

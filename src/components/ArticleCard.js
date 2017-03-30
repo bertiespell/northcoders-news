@@ -15,7 +15,7 @@ const ArticleCard = React.createClass({
                     </div>
                     <div className='media-content'>
                         <div className='content'>
-                            <h3 className='title is-3'>
+                            <h3 className='title is-4'>
                                 <Link to={`/article/${this.props.id}`}>{this.props.title}</Link>
                             </h3>
                         </div>
