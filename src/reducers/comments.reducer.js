@@ -29,7 +29,6 @@ function commentsReducer(prevState = initialState, action) {
             return newState;
         }
         case types.POST_COMMENT_SUCCESS: {
-            console.log("ACTIONRESPONSE", action.response);
             const newState = Object.assign({}, prevState);
             const newbyID = Object.assign({}, newState.byID);
             newbyID[action.response.data.comment._id] = action.response.data.comment;
@@ -58,8 +57,6 @@ function commentsReducer(prevState = initialState, action) {
         case types.DELETE_COMMENT_SUCCESS: {
             const newState = Object.assign({}, prevState);
             const newComments = Object.assign({}, newState.byID);
-            console.log('*****', newComments);
-            console.log('comment id!', action.comment_id);
             delete newComments[action.comment_id];
             newState.byID = newComments;
             newState.fetching = false;
