@@ -9,8 +9,8 @@ export function postComment (comment, articleID) {
         .post(`${ROOT}/articles/${articleID}/comments`, {
             'comment': comment,
         })
-        .then(() => {
-            dispatch(postCommentSuccess(comment, articleID));
+        .then((response) => {
+            dispatch(postCommentSuccess(comment, articleID, response));
         })
         .catch((error) => {
             dispatch(postCommentError(error.message));
@@ -24,11 +24,12 @@ export function postCommentRequest () {
     };
 }
 
-export function postCommentSuccess (comment, articleID) {
+export function postCommentSuccess (comment, articleID, response) {
     return {
         type: types.POST_COMMENT_SUCCESS,
         comment: comment,
-        articleID: articleID
+        articleID: articleID,
+        response: response
     };
 }
 
