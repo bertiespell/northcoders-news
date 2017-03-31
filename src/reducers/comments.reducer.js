@@ -1,7 +1,5 @@
 import * as types from '../types/types';
 
-// TODO: NEED TO ADD IN THE VOTE COMMENTS REDUCER, PERHAPS TO HERE
-
 const initialState = {
     byID: {},
     fetching: false,

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { postComment } from '../actions/postComment';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, propTypes } from 'redux-form';
 
 class CommentForm extends Component {
     render() {
-        // if (this.props.comments.form.comment) console.log("COMMMMETNS", this.props.comments.form.comment.values.comment);
-        // const { handleSubmit } = this.handleSubmit;
-        //console.log("IDDD", this.props.id);
         return (
             <div className='box' id='commentform'>
                 <form onSubmit={this.handleSubmit.bind(this)}>
@@ -31,6 +28,7 @@ class CommentForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.postComment(this.props.comments.form.comment.values.comment, this.props.id);
+        this.props.reset();
     }
 }
 
