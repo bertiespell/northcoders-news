@@ -3,7 +3,6 @@ const router = express.Router();
 const controllers = require('../controllers/controller');
 
 router.route('/').get(function (request, response) {
-    response.header 'Access-Control-Allow-Origin', '*';
     response.status(200).send({status: 'OK'});
 });
 
