@@ -10,6 +10,8 @@ var PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
 var apiRouter = require('./routes/api');
 var cors = require('cors');
 
+app.use(cors());
+
 mongoose.connect(db, function (err) {
   if (!err) {
     console.log(`connected to the Database: ${db}`);
@@ -17,8 +19,6 @@ mongoose.connect(db, function (err) {
     console.log(`error connecting to the Database ${err}`);
   }
 });
-
-app.use(cors());
 
 app.use(bodyParser.json());
 app.use('/api', apiRouter);
