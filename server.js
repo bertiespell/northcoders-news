@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var app = express();
 var config = require('./config');
-var db = config.DB[process.env.NODE_ENV] || process.env.DB;
+var db = 'mongodb://Bertiespell:q1w2e3r4t5@ds157390.mlab.com:57390/northcoders_news';
 var PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
 var apiRouter = require('./routes/api');
 
