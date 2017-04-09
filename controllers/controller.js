@@ -51,7 +51,7 @@ function getArticles (request, response) {
             if (error) {
                 return response.status(500).send({error: error});
             }
-            response.status(200).send({results});
+            response.status(200).send({articles});
         });
 
 }
