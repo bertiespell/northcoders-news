@@ -8,6 +8,7 @@ var config = require('./config');
 var db = 'mongodb://Bertiespell:q1w2e3r4t5@ds157390.mlab.com:57390/northcoders_news';
 var PORT = config.PORT[process.env.NODE_ENV] || process.env.PORT;
 var apiRouter = require('./routes/api');
+var cors = require('cors');
 
 mongoose.connect(db, function (err) {
   if (!err) {
@@ -16,6 +17,8 @@ mongoose.connect(db, function (err) {
     console.log(`error connecting to the Database ${err}`);
   }
 });
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use('/api', apiRouter);
