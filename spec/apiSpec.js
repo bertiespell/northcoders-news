@@ -13,7 +13,7 @@ const PORT = require('../config').PORT[process.env.NODE_ENV];
 
 const ROOT = `http://localhost:${PORT}/api`;
 
-// server (we need to get the server up and running!)
+// server (we need` to get the server up and running!)
 
 require('../server');
 
@@ -62,18 +62,18 @@ describe('API ROUTES', () => {
                 });
         });
     });
-    describe('GET /api/articles', () => {
-        it('should return the topics', (done) => {
-            request(ROOT) // callback based library (either error or response) (like axious, then and catch)
-                .get('/topics')
-                .end((error, response) => {
-                    if (error) throw error;
-                    expect(response.statusCode).to.equal(200);
-                    expect
+    // describe('GET /api/articles', () => {
+    //     it('should return the topics', (done) => {
+    //         request(ROOT) // callback based library (either error or response) (like axious, then and catch)
+    //             .get('/topics')
+    //             .end((error, response) => {
+    //                 if (error) throw error;
+    //                 expect(response.statusCode).to.equal(200);
+    //                 expect
 
-                    done();
-                });
-        });
-    });
+    //                 done();
+    //             });
+    //     });
+    // });
 });
 
