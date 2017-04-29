@@ -1,10 +1,9 @@
 import * as types from '../types/types';
 
-
 const initialState = {
     byID: {},
     loading: false,
-    error: 'blaaah'
+    error: ''
 };
 
 function voteReducer (prevState = initialState, action) {
@@ -14,7 +13,7 @@ function voteReducer (prevState = initialState, action) {
 
     }
     if (action.type === types.VOTE_ARTICLE_SUCCESS) {
-        newState.byID = action.data
+        newState.byID = action.data;
         newState.loading = false;
     }
      if (action.type === types.VOTE_ARTICLES_ERROR) {

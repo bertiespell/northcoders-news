@@ -7,8 +7,9 @@ export function voteComment (id, vote) {
     dispatch(voteCommentRequest());
     axios
       .put(`${ROOT}/comments/${id}?vote=${vote}`)
-      .then(() => {
-        dispatch(voteCommentSuccess(id, vote));      })
+      .then((res) => {
+        console.log("RESULT OF VOTING", res);
+        dispatch(voteCommentSuccess(id, vote, res));      })
       .catch((error) => {
         dispatch(voteCommentError(error.message));
       });
@@ -19,11 +20,12 @@ export function voteCommentRequest () {
   return {type: types.VOTE_COMMENTS_REQUEST};
 }
 
-export function voteCommentSuccess (comment_id, vote) {
+export function voteCommentSuccess (comment_id, vote, res) {
   return {
     type: types.VOTE_COMMENTS_SUCCESS,
     comment_id, 
-    vote
+    vote,
+    res
   };  
 }
 
