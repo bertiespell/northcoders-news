@@ -10,7 +10,6 @@ function voteReducer (prevState = initialState, action) {
     const newState = Object.assign({}, prevState);
     if (action.type === types.VOTE_ARTICLE_REQUEST) {
         newState.loading = true;
-
     }
     if (action.type === types.VOTE_ARTICLE_SUCCESS) {
         newState.byID = action.data;

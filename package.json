@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "northcoders-news",
   "version": "1.0.0",
   "description": "",
@@ -38,5 +39,33 @@
     "redux-form": "^6.5.0",
     "redux-thunk": "^2.2.0",
     "underscore": "^1.8.3"
+=======
+  "name": "northcoders-news-api",
+  "version": "1.0.0",
+  "description": "### Background",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.15.2",
+    "chance": "^1.0.4",
+    "cors": "^2.8.3",
+    "express": "^4.14.0",
+    "log4js": "^1.0.1",
+    "moment": "^2.17.0",
+    "mongoose": "^4.7.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cors": "^2.8.3",
+    "mocha": "^3.2.0",
+    "supertest": "^3.0.0"
+>>>>>>> back-end
   }
 }

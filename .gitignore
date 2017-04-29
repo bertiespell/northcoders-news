@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules
 */**/node_modules
 .DS_Store
@@ -12,3 +13,8 @@ bundle.js
 bundle.js.map
 **/*/bundle.js
 **/*/bundle.js.map
+=======
+.idea/*
+node_modules/*
+.DS_Store
+>>>>>>> back-end
