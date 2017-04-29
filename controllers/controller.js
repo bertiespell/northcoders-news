@@ -11,11 +11,9 @@ function getTopics (request, response) {
         }
         response.status(200).send({topics});
     });
-
 }
 
 function getArticles (request, response) {
-
     async.waterfall([
         function (next) {
             articlesModel.find({}, function (error, articles) {
@@ -26,7 +24,6 @@ function getArticles (request, response) {
             });
         },
         function (articles, next) {
-
             async.mapSeries(articles, function (article, done) {
                 commentsModel.find({
                     belongs_to: article._id
@@ -42,10 +39,7 @@ function getArticles (request, response) {
                 if (error) return next(error);
                 next(null, results);
             });
-
         }
-
-
     ],
         function (error, results) {
             if (error) {
@@ -53,7 +47,6 @@ function getArticles (request, response) {
             }
             response.status(200).send({articles: results});
         });
-
 }
 
 function getTopicArticles (request, response, next) {
@@ -164,7 +157,7 @@ function voteComment (request, response) {
         if (error) {
             return response.status(500).send({error});
         }
-        response.status(200).send({updated: comment});
+        response.status(200).send({updated: comment}); // TODO: SEND BACK THE INFO OF THE THING THAT'S BEEN UPDATED (this is probably the same as other post requests)... another db query here to get the whole comment?
     });
 }
 
