@@ -12,6 +12,7 @@ function voteReducer (prevState = initialState, action) {
         newState.loading = true;
     }
     if (action.type === types.VOTE_ARTICLE_SUCCESS) {
+        console.log("ACTION DATA", action.data);
         newState.byID = action.data;
         newState.loading = false;
     }
