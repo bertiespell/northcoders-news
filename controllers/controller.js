@@ -131,7 +131,7 @@ function voteArticle (request, response, next) {
     }
     articlesModel.findByIdAndUpdate(
         {_id: request.params.article_id},
-        {$inc: {votes: newVote}},
+        newVote,
         {new: true},
         (error, article) => {
         if (error) {
