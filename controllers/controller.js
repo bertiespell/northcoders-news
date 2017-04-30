@@ -92,7 +92,7 @@ function getUser (request, response) {
 }
 
 function addComment (request, response) {
-    var newComment = {
+    let newComment = {
         belongs_to: request.params.article_id,
         body: request.body.comment,
         created_by: 'northcoder',
@@ -117,30 +117,32 @@ function deleteComment (request, response) {
     });
 }
 
-function voteArticle (request, response) {
-    var query = request.query.vote;
-    if (query === 'up') {
+function voteArticle (request, response, next) {
+    let newVote = {};
+    if (request.query.vote === 'up') {
         newVote = {
             $inc: {votes: 1}
         };
     }
-    if (query === 'down') {
+    if (request.query.vote === 'down') {
         newVote = {
             $inc: {votes: -1}
         };
     }
-    articlesModel.update({
-        _id: request.params.article_id
-    }, newVote, function (error, article, next) {
+    articlesModel.findByIdAndUpdate(
+        {_id: request.params.article_id},
+        {$inc: {votes: newVote}}, 
+        (error, article) => {
         if (error) {
-            return response.status(500).send({error});
+            return next(error);
         }
-        response.status(200).send({updated: article});
+        response.status(201).send({article});
     });
 }
 
 function voteComment (request, response) {
-    var query = request.query.vote;
+    let newVote = {};
+    let query = request.query.vote;
     if (query === 'up') {
         newVote = {
             $inc: {votes: 1}
