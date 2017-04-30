@@ -1,48 +1,28 @@
-<<<<<<< HEAD
-# Northcoders-news
 
-=======
-## Northcoders News API
+# Northcoders News
 
-### Background
+Welcome to my first end-to-end project! This project imitates the functionality of reddit, using a dataset seeded to a MongoDB and hosted on mLab. It uses Node.js and express to provide custom API routes to a front-end built in React. This server is hosted on Heroku [here](https://pure-plateau-45897.herokuapp.com/api).
 
-We will be building the API which we used in the Northcoders News Sprint during the
-Front End block of the course. Your mongoose models and a Database seed file have been done for you.
+If you'd like to run the project locally, please ensure you have Node v7.0.0 or higher (or click [here](https://nodejs.org/en/download/) to do this).
 
-Look closely at the response you get for each route on http://northcoders-news-api.herokuapp.com/ You will notice that we also send data such as the comment and vote count for each article. You will need to think carefully about how to do this in your API.
+Clone the project, navigate into the directory and then install the necessary dependencies:
 
-You will need to get all your routes built up first as you can share the functionality between you `GET comments by id` route and the comment count on the articles response for example.
+```s
+git clone https://github.com/bertiespell/northcoders-news.git 
 
-### Mongoose Documentation
+cd northcoders-news
 
-The below are all model methods that you call on your models.
+npm install
 
-* [find](http://mongoosejs.com/docs/api.html#model_Model.find)
-* [findOne](http://mongoosejs.com/docs/api.html#model_Model.findOne)
-* [findOneAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate)
-* [findOneAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findOneAndRemove)
-* [findById](http://mongoosejs.com/docs/api.html#model_Model.findById)
-* [findByIdAndUpdate](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate)
-* [findByIdAndRemove](http://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove)
-* [update](http://mongoosejs.com/docs/api.html#model_Model.update)
+```
 
-There are also some methods that can be called on the documents that get returned. These are:
+To run the project on local host (port 9090), run the following:
 
-* [remove](http://mongoosejs.com/docs/api.html#model_Model-remove)
-* [save](http://mongoosejs.com/docs/api.html#model_Model-save)
-* [count](http://mongoosejs.com/docs/api.html#model_Model.count)
+```s
+npm run dev
+```
 
-### Tasks
-
-1. Seed your database with the main seed file `$ node seed/seed.js`
-2. Build your express App
-3. Mount an API Router onto your app
-4. Define the routes described below
-5. Define controller functions for each of your routes
-6. Once you have all your routes start to tackle responding with the vote and comment counts on article requests like this http://northcoders-news-api.herokuapp.com/api/articles
-7. Test your api routes!
-
-### Routes
+### API Routes
 ```
 GET /api/topics
 ```
@@ -90,4 +70,4 @@ Deletes a comment
 GET /api/users/:username
 ```
 Returns a JSON object with the profile data for the specified user.
->>>>>>> back-end
+
