@@ -44,7 +44,7 @@ describe('API ROUTES', () => {
     });
     describe('GET /api/topics', () => {
         it('should return the topics', (done) => {
-            request(ROOT) // callback based library (either error or response) (like axious, then and catch)
+            request(ROOT)
                 .get('/topics')
                 .end((error, response) => {
                     if (error) throw error;

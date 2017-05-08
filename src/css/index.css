@@ -1,11 +1,61 @@
-#commentform {
-    margin-top: 20px
+#titleBox {
+     background: #fcf6cf;
+
 }
 
 #titlee {
-    margin: 30px
+    margin: 2em 0em 2em 0em;
+    background: #fcf6cf;
 }
+
+.nav {
+     background: #f9e770;
+}
+
+nav.level:not(:last-child) {
+    margin: 0em;
+}
+
+#articleInfo {
+    margin: 1em;
+}
+
 
 #deleteButton {
     float: right
+}
+
+.box {
+    margin: 2em;
+    align-items: center;
+    justify-content: center;
+    background: #fcf6cf;
+}
+
+#author {
+    float: right;
+}
+
+.columns {
+    padding: 3em 0em 0em 0em;
+    background: #f9e770;
+}
+
+.voteword {
+    text-align: center;
+}
+
+.media-left {
+    align-items: center;
+    justify-content: center;
+}
+
+.media-content {
+    padding: 1.7em 0em 0em 0.6em;
+}
+
+.ArticleList {
+    background: #f9e770;
+    padding: 1em 0em 1em 0em;
+
 }

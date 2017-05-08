@@ -25,7 +25,7 @@ app.use('/api', apiRouter);
 
 app.use('/*', function (request, response) {
   response.status(404).send({ reason: 'ROUTE NOT FOUND' });
-})
+});
 
 app.listen(PORT, function () {
   console.log(`listening on port ${PORT}`);
@@ -36,7 +36,7 @@ app.use(function (error, request, response, next) {
     return response.status(400).send({
       reason: `No id ${error.value} found`,
       stack_trace: error
-    })
+    });
   }
   return next(error);
 });

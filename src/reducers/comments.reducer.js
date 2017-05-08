@@ -32,7 +32,7 @@ function commentsReducer(prevState = initialState, action) {
         case types.POST_COMMENT_SUCCESS: {
             const newState = Object.assign({}, prevState);
             const newbyID = Object.assign({}, newState.byID);
-            newbyID[action.response.data.comment._id] = action.response.data.comment;
+            newbyID[action.response.data.comment[0]._id] = action.response.data.comment[0];
             newState.byID = newbyID;
             return newState;
         }

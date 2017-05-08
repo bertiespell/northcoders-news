@@ -17,14 +17,19 @@ const ArticlePage = React.createClass({
                     <div className="column is-10 is-offset-1 is-success" id='articlePage'>
                         <h3 className="title is-3"><strong>{this.props.article.title}</strong></h3>
                         <p>{this.props.article.body}</p>
-                        <p className="title is-5 is-spaced">{'By: ' + this.props.article.created_by}</p>
+                        <p className="title is-5 is-spaced" id='author'>{'By: ' + this.props.article.created_by}</p>
                         <h1><strong>{'Votes: ' + this.props.article.votes}</strong></h1>
                         <h1><strong>{'Comments: ' + this.props.article.comments}</strong></h1>
-                        <Comments id={this.props.params.article}/>
+                        <Comments id={this.props.params.article} />
                     </div>
                 </div>
             );
-        } else return <p>Loading...</p>;
+        } else {
+            return (
+                <div><i className="fa fa-spinner fa-spin fa-6x fa-fw"></i>
+                    <span className="sr-only">Loading...</span></div>
+            );
+        }
     }
 });
 

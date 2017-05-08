@@ -18,13 +18,15 @@ const NavBar = React.createClass({
                     </div>
                 );
             })
-            : 'Loading';
+            : 
+                <div><i className="fa fa-spinner fa-spin fa-6x fa-fw"></i>
+                    <span className="sr-only">Loading...</span></div>;
         return (
             <div>
                 <nav className='nav has-shadow'>
                     <div className='container'>
                         <div className='nav-left'>
-                            <a className='nav-item'>
+                            <a className='nav-item logo'>
                                 <Link to='/'><img src='https://northcoders.com/images/logos/learn_to_code_manchester_original_second.png' alt='northcoders-logo' /></Link>
                             </a>
                         </div>

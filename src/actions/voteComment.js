@@ -8,7 +8,6 @@ export function voteComment (id, vote) {
     axios
       .put(`${ROOT}/comments/${id}?vote=${vote}`)
       .then((res) => {
-        console.log("RESULT OF VOTING", res);
         dispatch(voteCommentSuccess(id, vote, res));      })
       .catch((error) => {
         dispatch(voteCommentError(error.message));

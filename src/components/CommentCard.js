@@ -9,10 +9,13 @@ const CommentCard = React.createClass({
             this.props.comments.map(function (comment, i) {
                 return (
                     <div className='box' key={i}>
-                        <a onClick={this.props.voteComment.bind(null, comment._id, 'up')}><i className="fa fa-caret-up fa-2x" /></a>
-                        <article className='media'>
+                        <div className='media'>
                             <div className='media-left'>
-                                <p>{comment.votes}</p>
+
+                        <a onClick={this.props.voteComment.bind(null, comment._id, 'up')}><i className="fa fa-caret-up fa-2x" /></a>
+                                <div className='voteword'>
+                                    <p>{comment.votes}</p>
+                                </div>
                                 <a onClick={this.props.voteComment.bind(null, comment._id, 'down')}><i className="fa fa-caret-down fa-2x" /></a>
                             </div>
                             <div className='media-content'>
@@ -22,11 +25,12 @@ const CommentCard = React.createClass({
                                 <small>{comment.created_by}</small>
                                 <a className="button is-danger" id='deleteButton' onClick={this.props.deleteComment.bind(null, comment._id)}><i className='fa fa-trash-o' aria-hidden='true' ></i></a>
                             </div>
-                        </article>
+                        </div>
                     </div>
                 );
             }.bind(this))
-            : 'Loading...';
+            : <div><i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+            <span className="sr-only">Loading...</span></div>;
         return (
             <div>
                 {comments}

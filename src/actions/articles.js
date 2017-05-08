@@ -11,7 +11,6 @@ export function getArticles (topic) {
         axios
             .get(URL)
             .then(res => {
-                console.log("GET REQUEST", res, res.data, res.data.results);
                 dispatch(fetchArticlesSuccess(res.data.articles));
             })
             .catch(err => {
