@@ -1,7 +1,7 @@
 
 # Northcoders News
 
-Welcome to my first end-to-end project! This project imitates the functionality of reddit using a dataset seeded to a MongoDB and hosted on mLab. It uses Node.js and express to provide custom API routes to a front-end built in React. This server is hosted on Heroku [here](https://pure-plateau-45897.herokuapp.com/api).
+Welcome to my Northcoders News end-to-end project! This project imitates the functionality of reddit using a dataset seeded to a MongoDB and hosted on mLabs. It uses Node.js and Express to provide custom API routes to a purpose-build React front-end. The back-end server is hosted on Heroku [here](https://pure-plateau-45897.herokuapp.com/api).
 
 If you'd like to run the project locally, please ensure you have Node v7.0.0 or higher (or click [here](https://nodejs.org/en/download/) to do this).
 
@@ -23,6 +23,9 @@ npm run dev
 ```
 
 ### API Routes
+
+The back-end serves the following routes:
+
 ```
 GET /api/topics
 ```
