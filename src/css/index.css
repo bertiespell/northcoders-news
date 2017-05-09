@@ -1,15 +1,27 @@
 #titleBox {
-     background: #fcf6cf;
-
+    background: #283B76;
+    padding: 6em;
+    background: url('http://eskipaper.com/images/city-background-3.jpg') center;
 }
 
 #titlee {
-    margin: 2em 0em 2em 0em;
-    background: #fcf6cf;
+    margin: 1em 0em 1em 0em;
+    background: white;
+    border-bottom: solid #f48422;
+    font-size: 5em;
+}
+
+#articlePage {
+    color: black;
+}
+
+#articlePage.h3.strong {
+        color: black;
+
 }
 
 .nav {
-     background: #f9e770;
+    background: #fcfbed;
 }
 
 nav.level:not(:last-child) {
@@ -27,9 +39,9 @@ nav.level:not(:last-child) {
 
 .box {
     margin: 2em;
-    align-items: center;
-    justify-content: center;
-    background: #fcf6cf;
+    /*align-items: center;
+    justify-content: center;*/
+    background: #fcfbed;
 }
 
 #author {
@@ -38,7 +50,10 @@ nav.level:not(:last-child) {
 
 .columns {
     padding: 3em 0em 0em 0em;
-    background: #f9e770;
+     /*background: rgb(50,115,120);*/
+    /*background: url('http://eskipaper.com/images/city-background-3.jpg');*/
+    /*background-size: 100% 100%; might want these in to stretch image
+    background-repeat: no-repeat;*/
 }
 
 .voteword {
@@ -55,7 +70,10 @@ nav.level:not(:last-child) {
 }
 
 .ArticleList {
-    background: #f9e770;
-    padding: 1em 0em 1em 0em;
+    padding: 1em 2em 1em 2em;
+    /*background: #f48422;*/
 
+    /*background: url('http://eskipaper.com/images/city-background-3.jpg');*/
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }

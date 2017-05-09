@@ -143,14 +143,14 @@ pre {
 }
 
 body {
-  color: #4a4a4a;
+  color: black;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.428571428571429;
 }
 
 a {
-  color: #00d1b2;
+  color: #3d3733;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: none 86ms ease-out;
@@ -158,7 +158,7 @@ a {
 }
 
 a:hover {
-  color: #363636;
+  color: #f48422;
 }
 
 code {
@@ -2501,7 +2501,7 @@ a.box:active {
 }
 
 .title {
-  color: #363636;
+  color: #111111;
   font-size: 28px;
   line-height: 1;
 }

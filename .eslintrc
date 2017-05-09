@@ -22,7 +22,7 @@
         "jsx/no-undef": 1,
         "react/prop-types": 1,
         "no-console": 0,
-        "space-before-blocks": 1,
+        "space-before-blocks": 0,
         "arrow-spacing": 1,
         "keyword-spacing": 1,
         "space-infix-ops": 1,
