@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar';
+import Footer from './Footer';
 
 const App = React.createClass({
     render: function () {
@@ -10,12 +11,13 @@ const App = React.createClass({
                     <nav className='level-item has-text-centered' >
                         <div className='box' id='titleBox'>
                             <h1 className="title is-1" id='titlee'><strong>NORTHCODERS NEWS</strong></h1>
-                            </div>
+                        </div>
+                    </nav>
                 </nav>
-                </nav>
-                        {this.props.children}
-                </div>
-                    );
+                {this.props.children}
+                <Footer />
+            </div>
+        );
     }
 });
 

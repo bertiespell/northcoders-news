@@ -15,11 +15,13 @@ const ArticlePage = React.createClass({
             return (
                 <div className="columns">
                     <div className="column is-10 is-offset-1 is-success" id='articlePage'>
+                        <div className="content">
                         <h2 className="title is-2">{this.props.article.title}</h2>
-                        <p>{this.props.article.body}</p>
-                        <p className="title is-5 is-spaced" id='author'>{'By: ' + this.props.article.created_by}</p>
-                        <h1><strong>{'Votes: ' + this.props.article.votes}</strong></h1>
-                        <h1><strong>{'Comments: ' + this.props.article.comments}</strong></h1>
+                        <blockquote><p>{this.props.article.body}</p></blockquote>
+                        <p className="title is-5 is-spaced" id='author'><strong>{'By: ' + this.props.article.created_by}</strong></p>
+                        <p>{'Votes: ' + this.props.article.votes}</p>
+                        {'Comments: ' + this.props.article.comments}
+                        </div>
                         <Comments id={this.props.params.article} />
                     </div>
                 </div>

@@ -1164,11 +1164,11 @@ a.box:active {
 }
 
 .content a:not(.button):visited {
-  color: #b86bff;
+  color: #00afce;
 }
 
 .content a:not(.button):hover {
-  border-bottom-color: #00d1b2;
+  border-bottom-color: #7D4848;
 }
 
 .content li + li {
