@@ -1,9 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import { getArticles } from '../actions/articles';
 import { getTopArticles } from '../reducers/articles.reducer';
-
 
 import ArticleList from './ArticleList';
 
@@ -19,14 +18,14 @@ const TopicPage = React.createClass({
   render () {
     return (
       <div id='TopicPage'>
-        <ArticleList articles={this.props.articles}/>
+        <ArticleList articles={this.props.articles} />
       </div>
     );
   }
 });
 
 function mapDispatchToProps (dispatch) {
-  return  {
+  return {
     getArticles: (topic) => {
       dispatch(getArticles(topic));
     }

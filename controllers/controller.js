@@ -160,7 +160,7 @@ function voteComment (request, response) {
         if (error) {
             return response.status(500).send({error});
         }
-        response.status(200).send({updated: comment}); // TODO: SEND BACK THE INFO OF THE THING THAT'S BEEN UPDATED (this is probably the same as other post requests)... another db query here to get the whole comment?
+        response.status(200).send({updated: comment});
     });
 }
 

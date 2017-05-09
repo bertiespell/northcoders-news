@@ -13,7 +13,6 @@ export function getTopics () {
             .catch(error => {
                 dispatch(fetchTopicsError(error));
             });
-
     };
 }
 

@@ -8,9 +8,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const seed = require('../api-backend/seed/test.seed');
-
 const PORT = require('../config').PORT[process.env.NODE_ENV];
-
 const ROOT = `http://localhost:${PORT}/api`;
 
 require('../api-backend/server');

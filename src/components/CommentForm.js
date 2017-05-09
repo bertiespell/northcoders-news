@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, propTypes } from 'redux-form';
 
 class CommentForm extends Component {
-    render() {
+    render () {
         return (
             <div className='box' id='commentform'>
                 <form onSubmit={this.handleSubmit.bind(this)}>
@@ -25,20 +25,20 @@ class CommentForm extends Component {
             </div>
         );
     }
-    handleSubmit(event) {
+    handleSubmit (event) {
         event.preventDefault();
         this.props.postComment(this.props.comments.form.comment.values.comment, this.props.id);
         this.props.reset();
     }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
         comments: state
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
     return {
         postComment: (comment, articleID) => {
             dispatch(postComment(comment, articleID));

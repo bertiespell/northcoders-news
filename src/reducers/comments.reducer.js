@@ -7,13 +7,11 @@ const initialState = {
     commentText: ''
 };
 
-function commentsReducer(prevState = initialState, action) {
+function commentsReducer (prevState = initialState, action) {
     switch (action.type) {
         case types.VOTE_COMMENTS_SUCCESS: {
             let newState = Object.assign({}, prevState);
             let myState = Object.assign({}, newState.byID);
-            console.log('myState', myState);
-            console.log("*************", myState[action.comment_id]); // TODO: this is undefined
             if (action.vote === 'up') {
                 myState[action.comment_id].votes++;
             }

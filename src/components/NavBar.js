@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const NavBar = React.createClass({
     componentDidMount () {
-        this.props.getTopics ();
+        this.props.getTopics();
     },
     render () {
         const topics = this.props.topics ?
@@ -18,9 +18,9 @@ const NavBar = React.createClass({
                     </div>
                 );
             })
-            : 
-                <div><i className="fa fa-spinner fa-spin fa-6x fa-fw"></i>
-                    <span className="sr-only">Loading...</span></div>;
+            :
+            <div><i className="fa fa-spinner fa-spin fa-6x fa-fw"></i>
+                <span className="sr-only">Loading...</span></div>;
         return (
             <div>
                 <nav className='nav has-shadow'>
@@ -30,7 +30,6 @@ const NavBar = React.createClass({
                                 <Link to='/'><img src='https://northcoders.com/images/logos/learn_to_code_manchester_original_second.png' alt='northcoders-logo' /></Link>
                             </a>
                         </div>
-
                         {topics}
                     </div>
                 </nav>

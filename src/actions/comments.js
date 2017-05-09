@@ -2,7 +2,6 @@ import * as types from '../types/types';
 import axios from 'axios';
 import { ROOT } from '../../config/config';
 
-
 export function fetchComments (id) {
     return function (dispatch) {
         dispatch(fetchCommentsRequest());

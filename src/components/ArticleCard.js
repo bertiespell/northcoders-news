@@ -10,15 +10,15 @@ const ArticleCard = React.createClass({
                 <article className='media'>
                     <div className='media-left'>
                         <a onClick={this.props.voteArticle.bind(null, this.props.id, 'up')}><i className="fa fa-caret-up fa-2x" /></a>
-                            <div className='voteword'>
-                                <p>{this.props.votes}</p>
-                            </div>
+                        <div className='voteword'>
+                            <p>{this.props.votes}</p>
+                        </div>
                         <a onClick={this.props.voteArticle.bind(null, this.props.id, 'down')}><i className="fa fa-caret-down fa-2x" /></a>
                     </div>
                     <div className='media-content'>
                         <div className='content'>
                             <h3 className='title is-4'>
-                                <Link to={`/article/${this.props.id}`}>{this.props.title}</Link> 
+                                <Link to={`/article/${this.props.id}`}>{this.props.title}</Link>
                             </h3>
                         </div>
                     </div>
