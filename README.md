@@ -1,5 +1,5 @@
 
-# [Northcoders News] (http://utopian-dreams.surge.sh/)
+# Northcoders News
 
 Welcome to my Northcoders News end-to-end project, hosted [here](http://utopian-dreams.surge.sh/)! This project imitates the functionality of reddit using a dataset seeded to a MongoDB and hosted on mLabs. It uses Node.js and Express to provide custom API routes to a purpose-build React front-end. The back-end server is hosted on Heroku [here](https://pure-plateau-45897.herokuapp.com/api).
 
