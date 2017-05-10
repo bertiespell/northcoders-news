@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { postComment } from '../actions/postComment';
 import { connect } from 'react-redux';
-import { Field, reduxForm, propTypes } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 class CommentForm extends Component {
     render () {
@@ -46,8 +46,8 @@ function mapDispatchToProps (dispatch) {
     };
 }
 
-CommentForm = reduxForm({
+const FormConnector = reduxForm({
     form: 'comment'
 })(CommentForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(FormConnector);

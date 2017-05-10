@@ -6,10 +6,10 @@ import { getTopArticles } from '../reducers/articles.reducer';
 import ArticleList from './ArticleList';
 
 const FrontPage = React.createClass({
-    componentDidMount() {
+    componentDidMount () {
         this.props.getArticles();
     },
-    render() {
+    render () {
         return (
             <div id='FrontPage'>
                 <ArticleList articles={this.props.articles} />
@@ -18,13 +18,13 @@ const FrontPage = React.createClass({
     }
 });
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
     return {
         articles: getTopArticles(state, 10)
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
     return {
         getArticles: () => {
             dispatch(getArticles());

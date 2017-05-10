@@ -98,7 +98,7 @@ function addComment (request, response) {
         created_by: 'northcoder',
         votes: 0,
     };
-    commentsModel.create([newComment], function (error, comment, next) {
+    commentsModel.create([newComment], function (error, comment) {
         if (error) {
             return response.status(500).send({error});
         }
@@ -109,7 +109,7 @@ function addComment (request, response) {
 function deleteComment (request, response) {
     commentsModel.remove({
         _id: request.params.comment_id
-    }, function (error, comment) {
+    }, function (error) {
         if (error) {
             return response.status(500).send({error});
         }
@@ -156,7 +156,7 @@ function voteComment (request, response) {
     }
     commentsModel.update({
         _id: request.params.comment_id
-    }, newVote, function (error, comment, next) {
+    }, newVote, function (error, comment) {
         if (error) {
             return response.status(500).send({error});
         }
