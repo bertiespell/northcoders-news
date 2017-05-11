@@ -3,7 +3,6 @@ import * as deleteActions from '../src/actions/deleteComment';
 import * as postActions from '../src/actions/postComment';
 import * as voteActions from '../src/actions/voteComment';
 
-import * as types from '../src/types/types';
 import commentsReducer from '../src/reducers/comments.reducer';
 import { expect } from 'chai';
 
@@ -14,6 +13,7 @@ describe('comments.reducer', () => {
         error: null,
         commentText: ''
     };
+
     describe('FETCH_COMMENTS_REQUEST', () => {
         it('it should not modify the initialState', () => {
             const action = fetchActions.fetchCommentsRequest('59144842be6a6c2e5caf17f7');
@@ -54,13 +54,14 @@ describe('comments.reducer', () => {
             expect(commentsReducer(initialState, action)).to.eql(expectedState);
         });
     });
+
     describe('FETCH_COMMENTS_ERROR', () => {
         it('it should not modify the initialState', () => {
             const action = fetchActions.fetchCommentsError('oops');
             const newState = commentsReducer(initialState, action);
             expect(newState).to.not.equal(initialState);
         });
-        xit('should update state', function () {
+        it('should update state', function () {
             const initialState = {
                 byID: {},
                 fetching: true,
@@ -73,7 +74,26 @@ describe('comments.reducer', () => {
                 error: 'oops',
                 commentText: ''
             };
-            const action = fetchActions.fetchCommentsError({ message: 'oops' });
+            const action = fetchActions.fetchCommentsError('oops');
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
+        });
+    });
+
+    describe('VOTE_COMMENT_REQUEST', () => {
+        it('handles action VOTE_COMMENT_REQUEST correctly', () => {
+            const initialState = {
+                byID: {},
+                fetching: false,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {},
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
+            const action = voteActions.voteCommentRequest();
             expect(commentsReducer(initialState, action)).to.eql(expectedState);
         });
     });
@@ -95,69 +115,188 @@ describe('comments.reducer', () => {
             error: null,
             commentText: ''
         };
-        it('it should not modify the initial State', () => {
+        it('it should not modify the initial State and update State', () => {
+            const expectedState = {
+                byID: {
+                    '59144875be6a6c2e5caf190f': {
+                        _id: '59144842be6a6c2e5caf17f7',
+                        belongs_to: 'football',
+                        body: '...',
+                        comments: 5,
+                        created_by: 'tickle122',
+                        title: 'What does Jose Mourinho\'s handwriting say about his personality?',
+                        votes: 7
+                    }
+                },
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
             const res = { data: { updated: {} } };
             const comment_id = '59144875be6a6c2e5caf190f';
             const action = voteActions.voteCommentSuccess(comment_id, 'up', res);
             const newState = commentsReducer(initialState, action);
-            console.log(initialState, newState, action);
             expect(newState).to.not.equal(initialState);
+            expect(newState).to.eql(expectedState);
         });
-        it('should update state', function () {
-            it('handles action VOTE_COMMENT_REQUEST correctly', () => {
-                const initialState = {
-                    byID: {},
-                    fetching: false,
-                    error: null,
-                    commentText: ''
-                };
-                const expectedState = {
-                    byID: {},
-                    fetching: true,
-                    error: null,
-                    commentText: ''
-                };
-                const action = voteActions.voteCommentRequest;
-                expect(commentsReducer(initialState, action)).to.eql(expectedState);
-            });
+    });
+
+    describe('VOTE_COMMENTS_ERROR', () => {
+        it('handles VOTE_COMMENTS_ERROR correctly', function () {
+            const initialState = {
+                byID: {},
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {},
+                fetching: false,
+                error: 'oops',
+                commentText: ''
+            };
+            const action = voteActions.voteCommentError('oops');
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
         });
-        describe('POST_COMMENT_SUCCESS', () => {
-            it('it should not modify the initialState', () => {
-                it('and handles action FETCH_ARTICLE_ERROR correctly', () => {
-                    // const initialState = {
-                    //     fetching: false,
-                    //     byID: [],
-                    //     error: null
-                    // };
-                    // const expectedState = {
-                    //     byID: [],
-                    //     fetching: false,
-                    //     error: 'something went wrong'
-                    // };
-                    // const action = actions.fetchTopicsError('something went wrong');
-                    // expect(commentsReducer(initialState, action)).to.eql(expectedState);
-                });
-            });
+    });
+
+    describe('POST_COMMENT_REQUEST', () => {
+        const initialState = {
+            byID: {},
+            fetching: false,
+            error: null,
+            commentText: ''
+        };
+        const expectedState = {
+            byID: {},
+            fetching: true,
+            error: null,
+            commentText: ''
+        };
+        it('it should not modify the initialState', () => {
+            expect(expectedState).to.not.equal(initialState);
         });
-        describe('DELETE_COMMENT_REQUEST', () => {
-            it('it should not modify the initialState', () => {
-
-            });
+        it('should update fetching', () => {
+            const action = postActions.postCommentRequest();
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
         });
+    });
 
-
-        describe('DELETE_COMMENT_SUCCESS', () => {
-            it('it should not modify the initialState', () => {
-
-            });
+    describe('POST_COMMENT_SUCCESS', () => {
+        it('it should not modify the initialState', () => {
+            const responseContent = {
+                _id: '59149068790a690011fc5f29',
+                belongs_to: '59144848be6a6c2e5caf1818',
+                body: 'blaa',
+                created_at: 1494509587563,
+                created_by: 'northcoder',
+                votes: 0
+            };
+            const initialState = {
+                byID: {},
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {
+                    '59149068790a690011fc5f29': responseContent
+                },
+                fetching: false,
+                error: null,
+                commentText: ''
+            };
+            const articleID = '59144848be6a6c2e5caf1818';
+            const comment = 'blaa';
+            const response = { data: { comment: [responseContent] } };
+            const action = postActions.postCommentSuccess(comment, articleID, response);
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
         });
+    });
 
-
-        describe('DELETE_COMMENT_ERROR', () => {
-            it('it should not modify the initialState', () => {
-
-            });
+    describe('POST_COMMENT_ERROR', () => {
+        it('it should not modify the initialState', () => {
+            const initialState = {
+                byID: {},
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {},
+                fetching: false,
+                error: 'oops',
+                commentText: ''
+            };
+            const action = postActions.postCommentError('oops');
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
         });
+    });
 
+    describe('DELETE_COMMENT_REQUEST', () => {
+        it('handles action VOTE_COMMENT_REQUEST correctly', () => {
+            const initialState = {
+                byID: {},
+                fetching: false,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {},
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
+            const action = deleteActions.deleteCommentRequest();
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
+        });
+    });
+
+    describe('DELETE_COMMENT_SUCCESS', () => {
+        it('it should not modify the initialState', () => {
+            const initialState = {
+                byID: {
+                    '59144875be6a6c2e5caf190f': {
+                        _id: '59144842be6a6c2e5caf17f7',
+                        belongs_to: 'football',
+                        body: '...',
+                        comments: 5,
+                        created_by: 'tickle122',
+                        title: 'What does Jose Mourinho\'s handwriting say about his personality?',
+                        votes: 6
+                    }
+                },
+                fetching: false,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {},
+                fetching: false,
+                error: null,
+                commentText: ''
+            };
+            const action = deleteActions.deleteCommentSuccess('59144875be6a6c2e5caf190f');
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
+        });
+    });
+
+    describe('DELETE_COMMENT_ERROR', () => {
+        it('it should not modify the initialState', () => {
+            const initialState = {
+                byID: {},
+                fetching: true,
+                error: null,
+                commentText: ''
+            };
+            const expectedState = {
+                byID: {},
+                fetching: false,
+                error: 'oops',
+                commentText: ''
+            };
+            const action = deleteActions.deleteCommentError('oops');
+            expect(commentsReducer(initialState, action)).to.eql(expectedState);
+        });
     });
 });
