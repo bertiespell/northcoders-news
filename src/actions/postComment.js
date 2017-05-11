@@ -27,9 +27,9 @@ export function postCommentRequest () {
 export function postCommentSuccess (comment, articleID, response) {
     return {
         type: types.POST_COMMENT_SUCCESS,
-        comment: comment,
-        articleID: articleID,
-        response: response
+        comment,
+        articleID,
+        response
     };
 }
 

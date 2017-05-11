@@ -15,11 +15,11 @@ function voteReducer (prevState = initialState, action) {
         newState.byID = action.data;
         newState.loading = false;
     }
-     if (action.type === types.VOTE_ARTICLES_ERROR) {
-    newState.error = action.data;
-    newState.loading = false;
-  }
-  return newState;
+    if (action.type === types.VOTE_ARTICLE_ERROR) {
+        newState.error = action.data;
+        newState.loading = false;
+    }
+    return newState;
 }
 
 export default voteReducer;

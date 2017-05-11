@@ -9,6 +9,11 @@ const initialState = {
 
 function commentsReducer (prevState = initialState, action) {
     switch (action.type) {
+        case types.VOTE_COMMENTS_REQUEST: {
+            const newState = Object.assign({}, prevState);
+            newState.fetching = true;
+            return newState;
+        }
         case types.VOTE_COMMENTS_SUCCESS: {
             let newState = Object.assign({}, prevState);
             let myState = Object.assign({}, newState.byID);
@@ -21,7 +26,20 @@ function commentsReducer (prevState = initialState, action) {
             newState.byID = myState;
             return newState;
         }
+        case types.VOTE_COMMENTS_ERROR: {
+            const newState = Object.assign({}, prevState, {
+                fetching: false,
+                error: action.error
+            });
+            return newState;
+        }
         case types.FETCH_COMMENTS_REQUEST: {
+            const newState = Object.assign({}, prevState, {
+                fetching: true
+            });
+            return newState;
+        }
+        case types.POST_COMMENT_REQUEST: {
             const newState = Object.assign({}, prevState, {
                 fetching: true
             });
@@ -31,7 +49,14 @@ function commentsReducer (prevState = initialState, action) {
             const newState = Object.assign({}, prevState);
             const newbyID = Object.assign({}, newState.byID);
             newbyID[action.response.data.comment[0]._id] = action.response.data.comment[0];
+            newState.fetching = false;
             newState.byID = newbyID;
+            return newState;
+        }
+        case types.POST_COMMENT_ERROR: {
+            const newState = Object.assign({}, prevState);
+            newState.error = action.error;
+            newState.fetching = false;
             return newState;
         }
         case types.FETCH_COMMENTS_SUCCESS: {
@@ -44,13 +69,13 @@ function commentsReducer (prevState = initialState, action) {
         case types.FETCH_COMMENTS_ERROR: {
             const newState = Object.assign({}, prevState, {
                 fetching: false,
-                error: action.data
+                error: action.error
             });
             return newState;
         }
         case types.DELETE_COMMENT_REQUEST: {
             const newState = Object.assign({}, prevState);
-            newState.loading = true;
+            newState.fetching = true;
             return newState;
         }
         case types.DELETE_COMMENT_SUCCESS: {
@@ -64,7 +89,7 @@ function commentsReducer (prevState = initialState, action) {
         case types.DELETE_COMMENT_ERROR: {
             const newState = Object.assign({}, prevState);
             newState.error = action.err;
-            newState.loading = false;
+            newState.fetching = false;
             return newState;
         }
         default: {
