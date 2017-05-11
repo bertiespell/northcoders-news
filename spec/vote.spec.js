@@ -1,9 +1,8 @@
 import * as actions from '../src/actions/vote';
-import * as types from '../src/types/types';
 import voteReducer from '../src/reducers/vote.reducer';
 import { expect } from 'chai';
 
-describe('voteArticle', () => {
+describe('vote.reducer', () => {
     const initialState = {
         byID: {},
         loading: false,
@@ -71,7 +70,7 @@ describe('voteArticle', () => {
             const newState = voteReducer(initialState, action);
             expect(newState).to.not.equal(initialState);
         });
-        xit('handles action VOTE_ARTICLE_ERROR correctly', () => {
+        it('handles action VOTE_ARTICLE_ERROR correctly', () => {
             const initialState = {
                 loading: true,
                 byID: {},

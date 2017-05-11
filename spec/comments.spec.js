@@ -33,15 +33,20 @@ describe('comments.reducer', () => {
     });
 
     describe('FETCH_COMMENTS_SUCCESS', () => {
+        const data = {
+            _id: '59144875be6a6c2e5caf190f',
+            belongs_to: '59144848be6a6c2e5caf1818',
+            body: 'Ci...',
+            created_at: 1494284353000,
+            created_by: 'tickle122',
+            votes: 10
+        };
         it('it should not modify the initialState', () => {
-            const data = {
-                _id: '59144875be6a6c2e5caf190f',
-                belongs_to: '59144848be6a6c2e5caf1818',
-                body: 'Ci...',
-                created_at: 1494284353000,
-                created_by: 'tickle122',
-                votes: 10
-            };
+            const action = fetchActions.fetchCommentsSuccess([data]);
+            const newState = commentsReducer(initialState, action);
+            expect(newState).to.not.equal(initialState);
+        });
+        it('it should update the state with response data', () => {
             const action = fetchActions.fetchCommentsSuccess([data]);
             const expectedState = {
                 byID: {
@@ -80,7 +85,12 @@ describe('comments.reducer', () => {
     });
 
     describe('VOTE_COMMENT_REQUEST', () => {
-        it('handles action VOTE_COMMENT_REQUEST correctly', () => {
+        it('it should not modify the initialState', () => {
+            const action = voteActions.voteCommentRequest();
+            const newState = commentsReducer(initialState, action);
+            expect(newState).to.not.equal(initialState);
+        });
+        it('handles action VOTE_COMMENT_REQUEST correctly and updates state', () => {
             const initialState = {
                 byID: {},
                 fetching: false,
@@ -115,7 +125,7 @@ describe('comments.reducer', () => {
             error: null,
             commentText: ''
         };
-        it('it should not modify the initial State and update State', () => {
+        it('it should not modify the initial state and update state with data', () => {
             const expectedState = {
                 byID: {
                     '59144875be6a6c2e5caf190f': {
@@ -142,7 +152,12 @@ describe('comments.reducer', () => {
     });
 
     describe('VOTE_COMMENTS_ERROR', () => {
-        it('handles VOTE_COMMENTS_ERROR correctly', function () {
+        it('it should not modify the initialState', () => {
+            const action = voteActions.voteCommentError();
+            const newState = commentsReducer(initialState, action);
+            expect(newState).to.not.equal(initialState);
+        });
+        it('handles VOTE_COMMENTS_ERROR correctly and updates state', function () {
             const initialState = {
                 byID: {},
                 fetching: true,
@@ -234,7 +249,7 @@ describe('comments.reducer', () => {
     });
 
     describe('DELETE_COMMENT_REQUEST', () => {
-        it('handles action VOTE_COMMENT_REQUEST correctly', () => {
+        it('handles action VOTE_COMMENT_REQUEST correctly and updates state', () => {
             const initialState = {
                 byID: {},
                 fetching: false,
@@ -253,7 +268,7 @@ describe('comments.reducer', () => {
     });
 
     describe('DELETE_COMMENT_SUCCESS', () => {
-        it('it should not modify the initialState', () => {
+        it('it should not modify the initialState and updates state', () => {
             const initialState = {
                 byID: {
                     '59144875be6a6c2e5caf190f': {
@@ -282,7 +297,7 @@ describe('comments.reducer', () => {
     });
 
     describe('DELETE_COMMENT_ERROR', () => {
-        it('it should not modify the initialState', () => {
+        it('it should not modify the initialState and updates state', () => {
             const initialState = {
                 byID: {},
                 fetching: true,

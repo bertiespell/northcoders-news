@@ -1,5 +1,4 @@
 import * as actions from '../src/actions/topics';
-import * as types from '../src/types/types';
 import topicsReducer from '../src/reducers/topics.reducer';
 import { expect } from 'chai';
 
@@ -9,7 +8,7 @@ describe('topics.reducer', () => {
         byID: [],
         error: null
     };
-    describe('VOTE_TOPICS_REQUEST', function () {
+    describe('FETCH_TOPICS_REQUEST', function () {
         it('should not modify inital state', function () {
             const action = actions.fetchTopicsRequest();
             const newState = topicsReducer(initialState, action);
@@ -28,13 +27,13 @@ describe('topics.reducer', () => {
             expect(topicsReducer(initialState, action)).to.eql(expectedState);
         });
     });
-    describe('VOTE_TOPICS_SUCCESS', function () {
+    describe('FETCH_TOPICS_SUCCESS', function () {
         it('should not modify inital state', function () {
             const action = actions.fetchTopicsSuccess(['football', 'coding', 'cooking']);
             const newState = topicsReducer(initialState, action);
             expect(newState).to.not.equal(initialState);
         });
-        it('should update loading to true', function () {
+        it('should update loading to false', function () {
             const initialState = {
                 byID: [],
                 fetching: true,
@@ -49,18 +48,25 @@ describe('topics.reducer', () => {
             expect(topicsReducer(initialState, action)).to.eql(expectedState);
         });
     });
-    it('handles action FETCH_TOPICS_ERROR correctly', () => {
-        const initialState = {
-            fetching: false,
-            byID: [],
-            error: null
-        };
-        const expectedState = {
-            byID: [],
-            fetching: false,
-            error: 'something went wrong'
-        };
-        const action = actions.fetchTopicsError('something went wrong');
-        expect(topicsReducer(initialState, action)).to.eql(expectedState);
+    describe('FETCH_TOPICS_ERROR', function () {
+        it('should not modify inital state', function () {
+            const action = actions.fetchTopicsError('oops');
+            const newState = topicsReducer(initialState, action);
+            expect(newState).to.not.equal(initialState);
+        });
+        it('handles action FETCH_TOPICS_ERROR correctly', () => {
+            const initialState = {
+                fetching: false,
+                byID: [],
+                error: null
+            };
+            const expectedState = {
+                byID: [],
+                fetching: false,
+                error: 'something went wrong'
+            };
+            const action = actions.fetchTopicsError('something went wrong');
+            expect(topicsReducer(initialState, action)).to.eql(expectedState);
+        });
     });
 });
