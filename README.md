@@ -32,14 +32,14 @@ npm test
 
 This runs the tests for the front-end (specifically the reducers). If you would like to run the back-end API tests, you will need to install mongo (see [here](https://www.mongodb.com/download-center#community) for details on how to do this).
 
-Next you will need to make sure you have a local mongo database running by typing the following in the command line:
+Next you will need to make sure you have a local mongo database running in another terminal, by typing the following into the command line:
 
 ```s
 mongod
 
 ```
 
-Finally, once your Mongo database is running, in order to run the API tests, you will need to open the code, navigate into the spec folder, and find the apiSpec.js. Now remove the 'x' from line 18 of the code - this will change these tests from pending to active:
+Finally, once your Mongo database is up and running running, in order to run the API tests you will need to open the code, navigate into the spec folder, and find the apiSpec.js. Now remove the 'x' from line 18 of the code - this will change these tests from pending to active:
 
 ### Before
 ```javascript
