@@ -20,6 +20,48 @@ To run the project on local host (port 9090), run the following:
 
 ```s
 npm run dev
+
+```
+
+This project comes with extensive testing. If you would like to run the tests, you can do so with node:
+
+```s
+npm test
+
+```
+
+This runs the tests for the front-end (specifically the reducers). If you would like to run the back-end API tests, you will need to install mongo (see [here](https://www.mongodb.com/download-center#community) for details on how to do this).
+
+Next you will need to make sure you have a local mongo database running by typing the following in the command line:
+
+```s
+mongod
+
+```
+
+Finally, once your Mongo database is running, in order to run the API tests, you will need to open the code, navigate into the spec folder, and find the apiSpec.js. Now remove the 'x' from line 18 of the code - this will change these tests from pending to active:
+
+### Before
+```javascript
+xdescribe('API ROUTES', () => {
+        // ...
+});
+
+```
+
+### After
+```javascript
+describe('API ROUTES', () => {
+    // ...
+});
+
+```
+
+This project is also fully linted, check it out by running the lint script:
+
+```s
+npm run lint
+
 ```
 
 ### API Routes
