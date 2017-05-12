@@ -12,14 +12,14 @@ const NavBar = React.createClass({
             this.props.topics.map(function (topic, i) {
                 return (
                     <div key={i}>
-                        <a className="nav-item is-tab is-hidden-mobile" title={topic.title}>
+                        <a className="nav-item is-tab" title={topic.title}>
                             <Link to={`/${topic.title.toLowerCase()}`}>{topic.title}</Link>
                         </a>
                     </div>
                 );
             })
             :
-            <div><i className="fa fa-spinner fa-spin fa-6x fa-fw"></i>
+            <div className='has-text-centered spinner'><i className="fa fa-spinner fa-spin fa-6x fa-fw spinner is-center"></i>
                 <span className="sr-only">Loading...</span></div>;
         return (
             <div>

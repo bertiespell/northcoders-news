@@ -6,7 +6,7 @@ import { voteArticle } from '../actions/vote';
 const ArticleCard = React.createClass({
     render () {
         return (
-            <div className='box'>
+            <div className='box articleBox'>
                 <article className='media'>
                     <div className='media-left'>
                         <a onClick={this.props.voteArticle.bind(null, this.props.id, 'up')}><i className="fa fa-caret-up fa-2x" /></a>

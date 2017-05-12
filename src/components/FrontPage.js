@@ -10,17 +10,28 @@ const FrontPage = React.createClass({
         this.props.getArticles();
     },
     render () {
-        return (
-            <div id='FrontPage'>
-                <ArticleList articles={this.props.articles} />
-            </div>
-        );
+        if (!this.props.fetching) {
+            return (
+                <div id='FrontPage'>
+                    <ArticleList articles={this.props.articles} />
+                </div>
+            );
+        }
+        else {
+            return (
+                <div className="spinner">
+                    <i className="fa fa-spinner fa-spin fa-5x fa-fw spinner is-center"></i>
+                    <span className="sr-only">Loading...</span>
+                </div>
+            );
+        }
     }
 });
 
 function mapStateToProps (state) {
     return {
-        articles: getTopArticles(state, 10)
+        articles: getTopArticles(state, 10),
+        fetching: state.articles.fetching
     };
 }
 

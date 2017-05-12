@@ -12,6 +12,26 @@
     border-radius: 0.2em;
 }
 
+#FrontPage {
+    margin: 0;
+}
+
+.spinner {
+        /*justify-content: center;*/
+    /*width: auto;*/
+    /*margin: 0 auto;*/
+    /*margin: 1em 1em 1em 1em;*/
+    /*padding-left: 50%;*/
+    text-align:center;
+    /*vertical-align:middle;*/
+    /*align-content: middle;*/
+    /*align-items: middle;*/
+    /*display: absolute;*/
+    /*position: flex;*/
+    /*display: relative;*/
+    /*display: inline;*/
+}
+
 #articlePage {
     color: black;
 }
@@ -23,6 +43,10 @@
 .nav {
     background: #fcfbed;
 }
+
+/*.nav.level {
+    margin: 0;
+}*/
 
 nav.level:not(:last-child) {
     margin: 0em;
@@ -40,6 +64,10 @@ nav.level:not(:last-child) {
 .box {
     margin: 2em;
     background: #fcfbed;
+}
+
+.articleBox:hover {
+    background: lightgray;
 }
 
 #author {

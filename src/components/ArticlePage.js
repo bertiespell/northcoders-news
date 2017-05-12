@@ -27,8 +27,10 @@ const ArticlePage = React.createClass({
             );
         } else {
             return (
-                <div><i className="fa fa-spinner fa-spin fa-6x fa-fw"></i>
-                    <span className="sr-only">Loading...</span></div>
+                <div className="spinner">
+                    <i className="fa fa-spinner fa-spin fa-5x fa-fw spinner is-center"></i>
+                    <span className="sr-only">Loading...</span>
+                </div>
             );
         }
     }
