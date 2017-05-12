@@ -2,6 +2,7 @@
     background: #283B76;
     padding: 6em;
     background: url('http://eskipaper.com/images/city-background-3.jpg') center;
+    margin-bottom: 1em;
 }
 
 #titlee {
@@ -17,19 +18,12 @@
 }
 
 .spinner {
-        /*justify-content: center;*/
-    /*width: auto;*/
-    /*margin: 0 auto;*/
-    /*margin: 1em 1em 1em 1em;*/
-    /*padding-left: 50%;*/
+    margin-top: 0.5em;
     text-align:center;
-    /*vertical-align:middle;*/
-    /*align-content: middle;*/
-    /*align-items: middle;*/
-    /*display: absolute;*/
-    /*position: flex;*/
-    /*display: relative;*/
-    /*display: inline;*/
+}
+
+.spinner2 {
+    padding-top: 1em;
 }
 
 #articlePage {
@@ -41,12 +35,12 @@
 }
 
 .nav {
-    background: #fcfbed;
+    background: white;
 }
 
-/*.nav.level {
-    margin: 0;
-}*/
+#commentform {
+    margin-top: 1.5em;
+}
 
 nav.level:not(:last-child) {
     margin: 0em;
@@ -62,7 +56,6 @@ nav.level:not(:last-child) {
 }
 
 .box {
-    margin: 2em;
     background: #fcfbed;
 }
 

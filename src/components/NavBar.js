@@ -19,7 +19,7 @@ const NavBar = React.createClass({
                 );
             })
             :
-            <div className='has-text-centered spinner'><i className="fa fa-spinner fa-spin fa-6x fa-fw spinner is-center"></i>
+            <div className='has-text-centered spinner2'><i className="fa fa-spinner fa-spin fa-6x fa-fw spinner is-center"></i>
                 <span className="sr-only">Loading...</span></div>;
         return (
             <div>
